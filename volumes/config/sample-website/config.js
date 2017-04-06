@@ -1,3 +1,3 @@
 window.config = {
-    apiUrl: 'https://sampleapi.example.com'
+    apiUrl: 'https://138.197.103.152'
 };
