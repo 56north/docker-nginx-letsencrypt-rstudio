@@ -41,33 +41,8 @@ services:
     restart: always
     image: rocker/tidyverse
     container_name: rstudio
-    environment:
-      - VIRTUAL_HOST=138.197.103.152
-      - VIRTUAL_NETWORK=nginx-proxy
-      - VIRTUAL_PORT=8787
-      - LETSENCRYPT_HOST=138.197.103.152
-      - LETSENCRYPT_EMAIL=mikkel@56n.dk
-
-  sample-api:
-    restart: always
-    image: sample-api
-    build: ./samples/api
-    container_name: sample-api
-    environment:
-      - VIRTUAL_HOST=138.197.103.152
-      - VIRTUAL_NETWORK=nginx-proxy
-      - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=138.197.103.152
-      - LETSENCRYPT_EMAIL=mikkel@56n.dk
-
-  sample-website:
-    restart: always
-    image: sample-website
-    build: ./samples/website
-    container_name: sample-website
-    volumes:
-      - "./volumes/nginx-sample-website/conf.d/:/etc/nginx/conf.d"
-      - "./volumes/config/sample-website/config.js:/usr/share/nginx/html/config.js"
+    ports:
+      - "80:8787"
     environment:
       - VIRTUAL_HOST=138.197.103.152
       - VIRTUAL_NETWORK=nginx-proxy
